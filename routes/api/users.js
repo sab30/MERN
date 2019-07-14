@@ -7,6 +7,8 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 // Import UserModel
 const User = require('../../models/Users');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 // @route  GET api/users
 // @desc   Test Route
@@ -63,13 +65,28 @@ router.post('/',[
 
     //Return JWT 
 
-    res.send('User Registered');
+    const payload = {
+        user:{
+            id: user.id
+        }
+    }
+    //get from config
+    jwt.sign(
+        payload, 
+        config.get('jwtSecret'),
+        {expiresIn: 360000},
+        (err,token) => {
+            if (err) throw err;
+            res.json({token});
+        }
+        );
+
+    //res.send('User Registered');
     } catch (error) {
         console.error(error.message);
-        return res.status(500).send('User/ server error');
+        res.status(500).send('User/ server error');
     }
 
-    res.send('User Route');
 })
 
 
