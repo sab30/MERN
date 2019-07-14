@@ -1,11 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const {check, validationResult} = require('express-validator');
 
 const app = express();
 
 // Connect to DB 
 
 connectDB();
+
+// Init Body parser via express midleware
+app.use(express.json({ extended : false }));
  
 // If no port is set by default the port would be 5000
 const PORT = process.env.PORT || 5000; 
