@@ -2,13 +2,14 @@
 const express = require('express');
 // Useexpress Reouter
 const router = express.Router();
+const config = require('config');
 const {check, validationResult} = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 // Import UserModel
-const User = require('../../models/Users');
+const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+
 
 // @route  GET api/users
 // @desc   Test Route
