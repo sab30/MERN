@@ -7,17 +7,17 @@ const {check, validationResult} = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 // Import UserModel
-const User = require('../../models/User');
+// const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 
 
-// @route  GET api/users
-// @desc   Test Route
-// @access Public
-// router.get('/', (req,res) =>{
-//     res.send('User Route');
-// })
-
+/**
+ * {
+    "name" :"Sabarish",
+    "email":"sabarish3012@gmail.com",
+    "password":"123456"
+  }
+ */
 router.post('/',[
     check('name' , 'Name is required').not().isEmpty(),
     check('email' , 'Please include a valid email').isEmail(),

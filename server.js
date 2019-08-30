@@ -15,7 +15,7 @@ app.use(express.json({ extended : false }));
 const PORT = process.env.PORT || 5000; 
 
 //Sample endpoint , callback with req, resoponse
-app.get('/', (req,res) => res.send('API Running....'));
+app.get('/', (req,res) => res.send('MERN API Running ....'));
 
 // DEFINE AND ACCESS THE ROUTES
 app.use('/api/users', require('./routes/api/users'));
